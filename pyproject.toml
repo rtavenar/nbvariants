@@ -1,0 +1,17 @@
+[project]
+name = "nbvariants"
+description = "utility to remove correction from my notebooks (hence generate correction-free versions)"
+version = "0.0.1"
+authors = [
+    { name = "Romain Tavenard", email = "romain.tavenard@univ-rennes2.fr" }
+]
+dependencies = [
+    "nbformat"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+nbvariants = "nbvariants.nbvariants:main_cli"
