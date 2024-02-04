@@ -47,7 +47,8 @@ def remove_corr_from_notebook(input_fname,
 
 def single_source_multi_output(input_fname,
                                tags_per_output, 
-                               remove_listed_tags=True):
+                               remove_listed_tags=True,
+                               remove_all_outputs=False):
     """tags_per_output is a dict which keys are output 
     file names and values are the lists of tags to keep
     for the given output.
@@ -73,6 +74,8 @@ def single_source_multi_output(input_fname,
                     break
             if not do_not_remove and c["cell_type"] == "code":
                 c["source"] = ""
+                c["outputs"] = ""
+            if remove_all_outputs:
                 c["outputs"] = ""
             c["metadata"]["tags"] = [t for t in c["metadata"].get("tags", [])
                                      if t not in all_tags or not remove_listed_tags]
